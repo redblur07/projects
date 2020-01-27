@@ -1,0 +1,26 @@
+public void connect() {
+    Gst.init();
+    Pipeline pipe = new Pipeline("SimplePipeline");
+    //Element src = ElementFactory.make("fakesrc", "Source");
+    Element src = ElementFactory.make("pulsesrc", "Source");
+    src.set("device", "alsa_output.pci-0000_00_1b.0.analog-stereo.monitor");
+    Element convert = ElementFactory.make("audioconvert", "convert");
+    Element lame = ElementFactory.make("lame", "lame");
+    lame.set("name", "enc");
+    lame.set("mode", "0");
+    lame.set("vbr-quality", "6");
+    //        AppSink appsink = (AppSink) ElementFactory.make("appsink", "stream");
+    //        Buffer buf = appsink.pullBuffer();
+    Element file = ElementFactory.make("filesink", "buffer");
+    file.set("location", "/tmp/buffer.mp3");
+    //        Element shout = ElementFactory.make("shout2send", "icecast");
+    //        shout.set("mount", "/pandora.mp3");
+    //        shout.set("port", "8000");
+    //        shout.set("password", "something");
+    //        shout.set("ip", "192.168.1.201");
+    pipe.addMany(src, convert, lame, file);
+    src.link(convert, lame, file);
+    pipe.setState(State.PLAYING);
+    Gst.main();
+    pipe.setState(State.NULL);
+}
