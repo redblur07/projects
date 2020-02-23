@@ -3,12 +3,19 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.DataLine;
 import javax.sound.sampled.SourceDataLine;
 
+import java.io.IOException; 
+import java.net.DatagramPacket; 
+import java.net.DatagramSocket; 
+import java.net.InetAddress; 
+import java.net.SocketException; 
+
 public class audio {
 
     public static void main(String[] args) {
         try {
             // select audio format parameters
-            AudioFormat af = new AudioFormat(24000, 16, 1, true, false);
+            int bsize = 4608;
+            AudioFormat af = new AudioFormat(44100, 16, 2, true, false);
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, af);
             SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
 
@@ -24,21 +31,77 @@ public class audio {
                 buffer[--i] = (byte) sample;
                 angle -= step;
             }
+            
+       // prepare audio output
+       line.open(af, 10000);
+       line.start();
+            
+            
+            
+            // Step 1 : Create a socket to listen at port 1234 
+        DatagramSocket ds = new DatagramSocket(5001); 
+        byte[] receive = new byte[bsize]; 
+  
+        DatagramPacket DpReceive = new DatagramPacket(receive, receive.length); 
+        int ii= 0;
+        while (true) 
+        { 
+  
+            // Step 2 : create a DatgramPacket to receive the data. 
+            DpReceive = new DatagramPacket(receive, receive.length); 
+  
+            // Step 3 : revieve the data in byte buffer. 
+            ds.receive(DpReceive); 
+            
+            line.write(receive, 0, receive.length);
+  
+            //System.out.println("Client:-" + data(receive)); 
+  
+            // Exit the server if the client sends "bye" 
+  
+            // Clear the buffer after every message. 
+            receive = new byte[bsize];
+            //bsize = bsize + 1; 
+        } 
+            
+            
+            
+            
+            
 
-            // prepare audio output
-            line.open(af, 4096);
-            line.start();
+          
             // output wave form repeatedly
-            for (int n=0; n<500; ++n) {
-                line.write(buffer, 0, buffer.length);
-            }
+            //for (int n=0; n<500; ++n) {
+            //    line.write(buffer, 0, buffer.length);
+            //}
             // shut down audio
-            line.drain();
-            line.stop();
-            line.close();
+            //line.drain();
+            //line.stop();
+            //line.close();
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage(), e);
         }
     }
+    
+  
+    // A utility method to convert the byte array 
+    // data into a string representation. 
+    public static StringBuilder data(byte[] a) 
+    { 
+        if (a == null) 
+            return null; 
+        StringBuilder ret = new StringBuilder(); 
+        int i = 0; 
+        while (a[i] != 0) 
+        { 
+            ret.append((char) a[i]); 
+            i++; 
+        } 
+        return ret; 
+    } 
+    
+    
+    
+    
 
 }

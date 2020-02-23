@@ -1,0 +1,16 @@
+ncluding root: 1
+  ==> set selinux context: u:object_r:app_data_file:s0
+I:addFile '/data/data/com.kingouser.com/files/activesu/1485491344025' including root: 1
+  ==> set selinux context: u:object_r:app_data_file:s0
+I:[MTP] MtpServer::run fd: 22
+E:[MTP] request read returned -1, errno: 22, exiting MtpServer::run loop
+I:addFile '/data/data/com.kingouser.com/files/activesu/1485491344063' including root: 1
+  ==> set selinux context: u:object_r:app_data_file:s0
+I:addFile '/data/data/com.kingouser.com/files/activesu/1485491344096' including root: 1
+  ==> set selinux context: u:object_r:app_data_file:s0
+I:InfoManager saving '/external_sd/TWRP/BACKUPS/6c9520d4/2018-04-17--23-25-53_KOT49HI9301IXCUAOF1/data.info'
+createTarFork() process ended with signal: 9
+Backup Failed. Cleaning Backup Folder.
+I:Copying file /tmp/recovery.log to /external_sd/TWRP/BACKUPS/6c9520d4/2018-04-17--23-25-53_KOT49HI9301IXCUAOF1/recovery.log
+I:[MTP] MtpServer::run fd: 22
+E:[MTP] request read returned -1, errno: 22, exiting MtpServer::run loop

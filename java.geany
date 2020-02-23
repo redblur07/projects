@@ -28,12 +28,9 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=4
-FILE_NAME_0=1021;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2FudpBaseClient_2.java;0;4
-FILE_NAME_1=459;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2FudpBaseServer_2.java;0;4
-FILE_NAME_2=0;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Ftest.java;0;4
-FILE_NAME_3=683;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Freciever.java;0;4
-FILE_NAME_4=463;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Fsender.java;0;4
+current_page=0
+FILE_NAME_0=7188;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Faudioview.java;0;4
+FILE_NAME_1=751;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Frecovery.java;0;4
 
 [VTE]
 last_dir=/root/projects/test

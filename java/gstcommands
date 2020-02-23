@@ -1,0 +1,15 @@
+gst-launch-1.0 -v alsasrc device=plughw:Set \
+! mulawenc ! rtppcmupay ! udpsink host=192.168.1.10 port=5001
+
+gst-launch-1.0 -v udpsrc port=5001 caps="application/x-rtp" \
+! queue ! rtppcmudepay ! mulawdec ! audioconvert ! autoaudiosink sync=false
+
+gst-launch-1.0 audiotestsrc ! alsasink
+
+gst-launch-1.0 filesrc location=thesong.mp3 ! decodebin ! audioconvert ! pulsesink
+
+
+
+gst-launch-1.0 -v filesrc location=song.mp3 ! decodebin ! udpsink host=192.168.1.101 port=5001
+
+gst-launch-1.0 -v filesrc location=song.mp3 ! decodebin ! udpsink auto-multicast=true host=228.5.6.7 port=5001
