@@ -14,7 +14,7 @@ public class audio {
     public static void main(String[] args) {
         try {
             // select audio format parameters
-            int bsize = 4608;
+            int bsize = 65000;
             AudioFormat af = new AudioFormat(44100, 16, 2, true, false);
             DataLine.Info info = new DataLine.Info(SourceDataLine.class, af);
             SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
@@ -38,30 +38,23 @@ public class audio {
             
             
             
-            // Step 1 : Create a socket to listen at port 1234 
+        // Step 1 : Create a socket to listen at port 1234 
         DatagramSocket ds = new DatagramSocket(5001); 
-        byte[] receive = new byte[bsize]; 
+        buffer = new byte[bsize]; 
   
-        DatagramPacket DpReceive = new DatagramPacket(receive, receive.length); 
+        DatagramPacket packet = new DatagramPacket(buffer, buffer.length); 
+        ds.receive(packet);
+        buffer = new byte[packet.getLength()];
+        packet =  new DatagramPacket(buffer, buffer.length);
+        
+        
         int ii= 0;
         while (true) 
         { 
+ 
+            ds.receive(packet);            
+            line.write(buffer, 0, buffer.length);
   
-            // Step 2 : create a DatgramPacket to receive the data. 
-            DpReceive = new DatagramPacket(receive, receive.length); 
-  
-            // Step 3 : revieve the data in byte buffer. 
-            ds.receive(DpReceive); 
-            
-            line.write(receive, 0, receive.length);
-  
-            //System.out.println("Client:-" + data(receive)); 
-  
-            // Exit the server if the client sends "bye" 
-  
-            // Clear the buffer after every message. 
-            receive = new byte[bsize];
-            //bsize = bsize + 1; 
         } 
             
             

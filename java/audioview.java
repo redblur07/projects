@@ -53,6 +53,7 @@ public static void readFile(){
 	
 	int num = bbuf.length;
 	short[] data=readBuff(bbuf, num/2);
+	//printShortArray(data, 50);
 	
 	int[] ldata = getLeftSamples(data);
 	int[] rldata = roundData(ldata, h);

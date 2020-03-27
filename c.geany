@@ -28,8 +28,11 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=0
-FILE_NAME_0=113;C;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fc%2Frecord.c;0;4
+current_page=2
+FILE_NAME_0=464;C;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fc%2Farecord.c;0;4
+FILE_NAME_1=133;C;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fc%2Ftester.c;0;4
+FILE_NAME_2=1452;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Fudpclient.java;0;4
+FILE_NAME_3=132;C;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fc%2Faudioplayer.c;0;4
 
 [VTE]
 last_dir=/root/projects/test

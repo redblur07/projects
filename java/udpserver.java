@@ -14,44 +14,39 @@ public class udpserver
 		int bytesize = 65000;
 		int numofpackets = 0;
         // Step 1 : Create a socket to listen at port 1234 
-        //DatagramSocket socket = new DatagramSocket(5001);
-        MulticastSocket msocket = new MulticastSocket(5001);
-        byte[] data = new byte[bytesize]; 
+        DatagramSocket socket = new DatagramSocket(5001);
+        //MulticastSocket socket = new MulticastSocket(5001);
+        byte[] data = new byte[bytesize];
         
-        //InetAddress ip = InetAddress.getLocalHost();
-        InetAddress group = InetAddress.getByName("228.5.6.7");
-        msocket.joinGroup(group);
+        //InetAddress ip = InetAddress.getByName("192.168.1.102");
+        //InetAddress ip = InetAddress.getByName("228.5.6.7");
+        //msocket.joinGroup(group);
         //System.out.println("ip=" + ip.getHostAddress());
   
-        DatagramPacket packet = null; 
+        DatagramPacket packet = new DatagramPacket(data, data.length); 
         while (true) 
         { 
-  
-            // Step 2 : create a DatgramPacket to receive the data. 
-            packet = new DatagramPacket(data, data.length); 
-  
-            // Step 3 : revieve the data in byte buffer. 
-            msocket.receive(packet);
+            socket.receive(packet);
             numofpackets = numofpackets + 1;
   
             System.out.println("Client:-" + data(data));
             //printByte(data);
             //System.out.println("ip address = " + packet.getAddress() + " port = " + packet.getPort());
-            System.out.println("Byte size = " + data.length + " Packet Size = " + packet.getLength() + " Count = " + numofpackets);
-            
+            //System.out.println("Byte size = " + data.length + " Packet Size = " + packet.getLength() + " Count = " + numofpackets);
+            //printByte(data);
             //byte[] send = data(receive).toString().getBytes();
             //DatagramPacket packet = new DatagramPacket(sen, sen.length, DpReceive.getAddress(), DpReceive.getPort());
             //ds.send(packet);
   
             // Exit the server if the client sends "bye" 
-            if (data(data).toString().equals("bye")) 
-            { 
-                System.out.println("Client sent bye.....EXITING"); 
-                break; 
-            } 
+            //if (data(data).toString().equals("bye")) 
+            //{ 
+            //    System.out.println("Client sent bye.....EXITING"); 
+            //    break; 
+            //} 
   
             // Clear the buffer after every message. 
-            data = new byte[bytesize]; 
+            //data = new byte[bytesize]; 
         } 
     }
     

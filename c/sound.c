@@ -98,6 +98,8 @@ int main(int argc, char **argv) {
 	buff = (char *) malloc(buff_size);
 
 	snd_pcm_hw_params_get_period_time(params, &tmp, NULL);
+	
+	printf("value = %d %d %d \n", tmp, buff_size, sizeof(buff));
 
 	for (loops = (seconds * 1000000) / tmp; loops > 0; loops--) {
 

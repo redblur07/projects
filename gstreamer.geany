@@ -28,7 +28,6 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=174;C;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fgstreamer%2Fstreamer.c;0;4
 
 [VTE]
 last_dir=/root/projects/gstreamer

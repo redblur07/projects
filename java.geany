@@ -29,8 +29,8 @@ long_line_column=72
 
 [files]
 current_page=0
-FILE_NAME_0=7188;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Faudioview.java;0;4
-FILE_NAME_1=751;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Frecovery.java;0;4
+FILE_NAME_0=1398;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Fdecoder.java;0;4
+FILE_NAME_1=627;Java;0;EUTF-8;1;1;0;%2Froot%2Fprojects%2Fjava%2Fudpclient.java;0;4
 
 [VTE]
 last_dir=/root/projects/test

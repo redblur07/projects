@@ -14,10 +14,10 @@ public class udpclient
   
         // Step 1:Create the socket object for 
         // carrying the data. 
-        DatagramSocket ds = new DatagramSocket(); 
+        DatagramSocket ds = new DatagramSocket(5002); 
   
-        InetAddress ip = InetAddress.getByName("192.168.1.100");
-        byte buf[] = new byte[50]; 
+        InetAddress ip = InetAddress.getByName(args[0]);
+        byte buf[] = new byte[50], bbuf[] = buf; 
   
         // loop while user not enters "bye" 
         while (true) 
@@ -29,8 +29,7 @@ public class udpclient
             
             // Step 2 : Create the datagramPacket for sending 
             // the data. 
-            DatagramPacket packet = 
-                  new DatagramPacket(buf, buf.length, ip, 5001); 
+            DatagramPacket packet = new DatagramPacket(buf, buf.length, ip, 5001); 
             
             System.out.println("Byte size = " + buf.length + " Packet Size = " + packet.getLength());
             
@@ -38,10 +37,29 @@ public class udpclient
             // Step 3 : invoke the send call to actually send 
             // the data. 
             ds.send(packet); 
+            //DatagramPacket ppacket = new DatagramPacket(bbuf, bbuf.length); 
+            //ds.receive(ppacket);
+            //System.out.println("message = " + data(bbuf) + "Byte size = " + bbuf.length + " Packet Size = " + ppacket.getLength());
+           
+            
   
             // break the loop if user enters "bye" 
             if (inp.equals("bye")) 
                 break; 
         } 
+    } 
+    
+        public static StringBuilder data(byte[] a) 
+    { 
+        if (a == null) 
+            return null; 
+        StringBuilder ret = new StringBuilder();
+        int i = 0; 
+        while (i < a.length && a[i] != 0) 
+        { 
+            ret.append((char) a[i]); 
+            i++; 
+        } 
+        return ret; 
     } 
 } 
